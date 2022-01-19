@@ -9,6 +9,8 @@ public class Postgres {
 
     private static void initDb() {
         try {
+            Class.forName("org.postgresql.Driver");
+
             URI dbUri = null;
             if (System.getenv("DATABASE_URL") != null ) {
                 dbUri = new URI(System.getenv("DATABASE_URL"));
