@@ -31,9 +31,13 @@ public class Postgres {
     }
 
     public static Connection getConnection() {
-        if(conn == null) {
-            // initialize db
-            initDb();
+        try {
+            if(conn == null || !conn.isClosed()) {
+                // initialize db
+                initDb();
+            }
+        } catch (Exception err) {
+            err.printStackTrace();
         }
         return conn;
     }
